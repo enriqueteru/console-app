@@ -4,12 +4,13 @@
   "description": "ToDo app in console",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "colors": "^1.4.0",
+    "inquirer": "^8.2.0",
     "nodemon": "^2.0.15"
   }
 }

@@ -1,34 +1,45 @@
+const { resolve } = require("path");
+
 require("colors");
 
 const showMsg = () => {
-  console.clear();
-  console.log("=========================");
-  console.log("   select one option  ".green);
-  console.log("=========================\n");
+  return new Promise((resolve) => {
+    
 
-  console.log(`${"1.".green}  Create Task`);
-  console.log(`${"2.".green}  List All Tasks `);
-  console.log(`${"3.".green}  List Completed Task`);
-  console.log(`${"4.".green}  List Pending Task`);
-  console.log(`${"5.".green}  Delete Task`);
-  console.log(`${"6.".green}  Exit\n`);
+    console.log(`${"1.".green}  Create Task`);
+    console.log(`${"2.".green}  List All Tasks `);
+    console.log(`${"3.".green}  List Completed Task`);
+    console.log(`${"4.".green}  List Pending Task`);
+    console.log(`${"5.".green}  Delete Task`);
+    console.log(`${"6.".green}  Exit\n`);
 
-
-}
-
-
-
-const pause = () => { 
     const readline = require("readline").createInterface({
-        input: process.stdin,
-        output: process.stdout,
-      });
+      input: process.stdin,
+      output: process.stdout,
+    });
+
+    readline.question("\n Select an option ", (opt) => {
+      readline.close();
+      resolve(opt);
     
-      readline.question("\nPress 'ENTER' for continue ", (opt) => {
-        readline.close();
-      });
-    };
-    
+    });
+  });
+};
+
+const pause = () => {
+    return new Promise(resolve => { 
+        const readline = require("readline").createInterface({
+            input: process.stdin,
+            output: process.stdout,
+          });
+
+          readline.question(" \n Press 'ENTER' for continue ", (opt) => {
+            readline.close();
+            resolve();
+            console.clear();
+          }); 
+
+    })}
 
 module.exports = {
   showMsg,
